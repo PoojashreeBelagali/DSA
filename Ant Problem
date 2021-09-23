@@ -1,0 +1,59 @@
+When will the ants die
+Problem Description
+
+We have a wooden plank of the length A units. Some ants are walking on the plank, each ant moves with speed 1 unit per second. Some of the ants move to the left, the other move to the right.
+When two ants moving in two different directions meet at some point, they change their directions and continue moving again. Assume changing directions doesn't take any additional time.
+
+When an ant reaches one end of the plank at a time t, it falls out of the plank imediately.
+
+Given an integer A and two integer arrays B signifying left going ants and C signifying right going ants, the positions of the ants moving to the left and the right. Return the moment when the last ant(s) fall out of the plank.
+
+
+Problem Constraints
+1 <= A <= 10^4
+0 <= B.length <= A + 1
+0 <= B[i] <= A
+0 <= C.length <= A + 1
+0 <= C[i] <= A
+1 <= B.length + C.length <= A + 1
+All values of left and right are unique, and each value can appear only in one of the two arrays.
+
+
+Input Format
+First argument contains integer A.
+
+Second argument contains B denoting ants moving left.
+
+Third argument contains C denoting ants moving right.
+
+
+Output Format
+Return a single integer.
+
+
+Code:
+
+  int max=Integer.MIN_VALUE;
+        int i=B.length-1;
+        int j=C.length-1;
+        int k=0;
+        while(i>=0 || k<C.length){
+         if(j>=0 && i>=0  ){
+                int t=Math.max(A-C[k], B[i]);
+                max=Math.max(max,t);
+
+            }else if(i>=0 && j<0){
+               max=Math.max(max,B[i]);
+            }else if(i<0 && j>=0){
+               max=Math.max(max,A-C[k]);
+           }
+            i--;
+            k++;
+            j--;
+
+
+        }
+        
+  Code approach:
+  
+  
