@@ -32,28 +32,24 @@ Return a single integer.
 
 
 Code:
-
+  int A=lenth of plank;
+  int[]  B= left going ants array
+  int[] C= right going ants array
   int max=Integer.MIN_VALUE;
-        int i=B.length-1;
-        int j=C.length-1;
-        int k=0;
-        while(i>=0 || k<C.length){
-         if(j>=0 && i>=0  ){
-                int t=Math.max(A-C[k], B[i]);
-                max=Math.max(max,t);
-
-            }else if(i>=0 && j<0){
-               max=Math.max(max,B[i]);
-            }else if(i<0 && j>=0){
-               max=Math.max(max,A-C[k]);
-           }
-            i--;
-            k++;
-            j--;
-
-
+      int ans=Integer.MIN_VALUE;
+        for(int i=0;i<B.length;i++){
+            ans=Math.max(ans,B[i]);
         }
+        for(int i=0;i<C.length;i++){
+            ans=Math.max(ans,A-C[i]);
+        }
+        
+        return max;
         
   Code approach:
   
+  1. A is length of plank
+  2. B is left going ants, so the time taken to reach left end (0) is (B-0);
+  3. C is right going ants, so the time taken to reach the right end is Total plank size (A) - C
+  4. Traverse through both the arrays and find max at each iteration
   
